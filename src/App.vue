@@ -1,11 +1,15 @@
-<template></template>
-<h1>Reaction Timer Game</h1>
-<button class @click="start"> Play </button>
-<script>
+<template>
+  <h1>Reaction Timer Game</h1>
+  <button class @click="start" :disabled="isPlaying"> Play </button>
+  <Block v-if="isPlaying" :delay="delay"></Block>
+</template>
 
+
+<script>
+import Block from '@/components/Block.vue';
 export default {
   name: 'App',
-  components: {},
+  components: { Block },
   data() {
     return {
       isPlaying: false,
@@ -14,9 +18,8 @@ export default {
   },
   methods: {
     start() {
-      this.delay = 2000 + Math.random() * 3000
+      this.delay = 2000 + Math.random() * 5000
       this.isPlaying = true;
-      console.log(delay)
     }
   }
 }
